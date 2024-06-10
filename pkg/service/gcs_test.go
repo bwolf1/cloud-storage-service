@@ -14,7 +14,7 @@ func TestStorageClient_UploadFile(t *testing.T) {
 		Client     *storage.Client
 		ProjectID  string
 		BucketName string
-		UploadPath string
+		Path       string
 	}
 	type args struct {
 		ctx    context.Context
@@ -35,7 +35,7 @@ func TestStorageClient_UploadFile(t *testing.T) {
 				Client:     tt.fields.Client,
 				ProjectID:  tt.fields.ProjectID,
 				BucketName: tt.fields.BucketName,
-				UploadPath: tt.fields.UploadPath,
+				Path:       tt.fields.Path,
 			}
 			if err := c.UploadFile(tt.args.ctx, tt.args.file, tt.args.object); (err != nil) != tt.wantErr {
 				t.Errorf("StorageClient.UploadFile() error = %v, wantErr %v", err, tt.wantErr)
@@ -49,7 +49,7 @@ func TestStorageClient_GetFile(t *testing.T) {
 		Client     *storage.Client
 		ProjectID  string
 		BucketName string
-		UploadPath string
+		Path string
 	}
 	type args struct {
 		ctx    context.Context
@@ -70,7 +70,7 @@ func TestStorageClient_GetFile(t *testing.T) {
 				Client:     tt.fields.Client,
 				ProjectID:  tt.fields.ProjectID,
 				BucketName: tt.fields.BucketName,
-				UploadPath: tt.fields.UploadPath,
+				Path: tt.fields.Path,
 			}
 			got, err := c.GetFile(tt.args.ctx, tt.args.object)
 			if (err != nil) != tt.wantErr {
@@ -89,7 +89,7 @@ func TestStorageClient_ListFiles(t *testing.T) {
 		Client     *storage.Client
 		ProjectID  string
 		BucketName string
-		UploadPath string
+		Path string
 	}
 	type args struct {
 		ctx context.Context
@@ -109,7 +109,7 @@ func TestStorageClient_ListFiles(t *testing.T) {
 				Client:     tt.fields.Client,
 				ProjectID:  tt.fields.ProjectID,
 				BucketName: tt.fields.BucketName,
-				UploadPath: tt.fields.UploadPath,
+				Path: tt.fields.Path,
 			}
 			got, err := c.ListFiles(tt.args.ctx)
 			if (err != nil) != tt.wantErr {
@@ -128,7 +128,7 @@ func TestStorageClient_MoveFile(t *testing.T) {
 		Client     *storage.Client
 		ProjectID  string
 		BucketName string
-		UploadPath string
+		Path string
 	}
 	type args struct {
 		ctx     context.Context
@@ -149,7 +149,7 @@ func TestStorageClient_MoveFile(t *testing.T) {
 				Client:     tt.fields.Client,
 				ProjectID:  tt.fields.ProjectID,
 				BucketName: tt.fields.BucketName,
-				UploadPath: tt.fields.UploadPath,
+				Path: tt.fields.Path,
 			}
 			if err := c.MoveFile(tt.args.ctx, tt.args.object, tt.args.newPath); (err != nil) != tt.wantErr {
 				t.Errorf("StorageClient.MoveFile() error = %v, wantErr %v", err, tt.wantErr)
@@ -163,7 +163,7 @@ func TestStorageClient_DeleteFile(t *testing.T) {
 		Client     *storage.Client
 		ProjectID  string
 		BucketName string
-		UploadPath string
+		Path string
 	}
 	type args struct {
 		ctx    context.Context
@@ -183,7 +183,7 @@ func TestStorageClient_DeleteFile(t *testing.T) {
 				Client:     tt.fields.Client,
 				ProjectID:  tt.fields.ProjectID,
 				BucketName: tt.fields.BucketName,
-				UploadPath: tt.fields.UploadPath,
+				Path: tt.fields.Path,
 			}
 			if err := c.DeleteFile(tt.args.ctx, tt.args.object); (err != nil) != tt.wantErr {
 				t.Errorf("StorageClient.DeleteFile() error = %v, wantErr %v", err, tt.wantErr)

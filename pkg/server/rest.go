@@ -30,7 +30,7 @@ func New() {
 		Client:     client,
 		BucketName: os.Getenv("BUCKET_NAME"),
 		ProjectID:  os.Getenv("PROJECT_ID"),
-		UploadPath: os.Getenv("UPLOAD_PATH"),
+		Path:       os.Getenv("OBJECT_PATH"),
 	}
 
 	router := gin.Default()

@@ -17,7 +17,7 @@ type StorageClient struct {
 	Client     *storage.Client
 	ProjectID  string
 	BucketName string
-	UploadPath string
+	Path       string
 }
 
 type Service interface {
@@ -63,7 +63,7 @@ func (c *StorageClient) UploadFile(ctx context.Context, file multipart.File, obj
 	defer cancel()
 
 	// Upload a bucket object
-	wc := c.Client.Bucket(c.BucketName).Object(c.UploadPath + object).NewWriter(ctx)
+	wc := c.Client.Bucket(c.BucketName).Object(c.Path + object).NewWriter(ctx)
 	if _, err := io.Copy(wc, file); err != nil {
 		return fmt.Errorf("error uploading file: %v", err)
 	}
@@ -83,7 +83,7 @@ func (c *StorageClient) GetFile(ctx context.Context, object string) ([]byte, err
 	ctx, cancel := context.WithTimeout(ctx, time.Second*time.Duration(maxTimeout))
 	defer cancel()
 
-	rc, err := c.Client.Bucket(c.BucketName).Object(c.UploadPath + object).NewReader(ctx)
+	rc, err := c.Client.Bucket(c.BucketName).Object(c.Path + object).NewReader(ctx)
 	if err != nil {
 		return nil, err
 	}
@@ -147,7 +147,7 @@ func (c *StorageClient) MoveFile(ctx context.Context, object string, newPath str
 	ctx, cancel := context.WithTimeout(ctx, time.Second*time.Duration(maxTimeout))
 	defer cancel()
 
-	src := c.Client.Bucket(c.BucketName).Object(c.UploadPath + object)
+	src := c.Client.Bucket(c.BucketName).Object(c.Path + object)
 	dst := c.Client.Bucket(c.BucketName).Object(newPath + object)
 	if _, err := dst.CopierFrom(src).Run(ctx); err != nil {
 		return err
@@ -169,7 +169,7 @@ func (c *StorageClient) DeleteFile(ctx context.Context, object string) error {
 	ctx, cancel := context.WithTimeout(ctx, time.Second*time.Duration(maxTimeout))
 	defer cancel()
 
-	if err := c.Client.Bucket(c.BucketName).Object(c.UploadPath + object).Delete(ctx); err != nil {
+	if err := c.Client.Bucket(c.BucketName).Object(c.Path + object).Delete(ctx); err != nil {
 		return err
 	}
 
