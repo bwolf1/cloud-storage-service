@@ -10,7 +10,7 @@ Performs the following actions on [GCS](https://cloud.google.com/storage)
 4. Move a file from one GCS bucket folder to another
 5. Delete a file from a GCS bucket folder
 
-Goals
+## Goals
 
 Started originally as a "take-home" assignment for a job interview.
 
