@@ -12,7 +12,7 @@ Performs the following actions on [GCS](https://cloud.google.com/storage)
 
 Goals
 
-This was a "take-home" assignment for a job interview.
+Started originally as a "take-home" assignment for a job interview.
 
 ## Perquisites
 
