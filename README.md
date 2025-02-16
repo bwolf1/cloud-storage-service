@@ -10,14 +10,9 @@ Performs the following actions on [GCS](https://cloud.google.com/storage)
 4. Move a file from one GCS bucket folder to another
 5. Delete a file from a GCS bucket folder
 
-TODO
+Goals
 
-1. Add a new service for AWS (Amazon Web Services) S3 buckets (`service/aws.go`)
-   with the same functionality as the GCS service (`service/gcs.go`)
-2. Add a gRPC server (`server/grpc.go`) as an alternative to the current REST server
-   (`server/rest.go`)
-3. Add the ability to create a new folder in the bucket
-4. Add the ability to delete a folder from the bucket
+This was a "take-home" assignment for a job interview.
 
 ## Perquisites
 
