@@ -1,8 +1,13 @@
 # cloud-storage-service
 
-Performs the following actions on [GCS](https://cloud.google.com/storage)
-(Google Cloud Storage) buckets via REST using
-[Gin](https://github.com/gin-gonic/gin) and the GCS Golang client.
+Service for exposing CRUD operations on a [Google Cloud Storage](https://cloud.google.com/storage) (GCS) bucket, with a [Gin](https://github.com/gin-gonic/gin) REST API.
+
+## Goals
+
+- Originally a "take-home" assignment for a job interview
+- Have a template to use for something else
+
+## Actions
 
 1. Upload a new or existing (update) file to a GCS bucket folder
 2. List all files in a GCS bucket folder
@@ -10,10 +15,6 @@ Performs the following actions on [GCS](https://cloud.google.com/storage)
 4. Move a file from one GCS bucket folder to another
 5. Delete a file from a GCS bucket folder
 
-## Goals
-
-- Originally a "take-home" assignment for a job interview
-- Have a template to use for something else
 
 ## Perquisites
 
